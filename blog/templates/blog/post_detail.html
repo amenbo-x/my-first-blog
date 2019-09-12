@@ -13,15 +13,15 @@
 </head>
 <body>
     {% block content %}
-        {% for post in posts %}
-            <div class="post">
-                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-                <p>{{ post.text|linebreaksbr }}</p>
+        <div class="post">
+            <h1>{{ post.title }}</h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+            {% if post.published_date %}
                 <div class="date">
-                    <p>published: {{ post.published_date }}</p>
+                    {{ post.published_date }}
                 </div>
-            </div>
-        {% endfor %}
+            {% endif %}
+        </div>
     {% endblock %}
 </body>
 </html>
